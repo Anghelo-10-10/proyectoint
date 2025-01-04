@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#video-background {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.obscure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 2; /* Asegura que el menú esté sobre el video */
+}
+
+.menu img {
+    width: 60px;
+    height: auto;
+    display: block;
+    border-radius: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 130px;
+}
+
+.menu img:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea el menú a la derecha */
+    margin-right: 200px; /* Espacio entre el borde y los enlaces */
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li {
+    padding: 0 20px;
+    font-size: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.navbar ul li:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+.navbar ul li a {
+    color: #ffffff;
+}
+
+.navbar ul li a:hover {
+    color: blanchedalmond;
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .menu {
+        padding: 10px 20px; /* Ajustado para pantallas pequeñas */
+    }
+
+    .menu label {
+        display: initial; /* Muestra el ícono de menú en pantallas pequeñas */
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+            rgb(1, 12, 0) 0%,
+            rgb(0, 12, 1) 60%
+        );
+        display: none;
+        width: 100%; /* Asegura que el navbar ocupe el ancho completo */
+        z-index: 3; /* Lo pone por encima de otros elementos */
+    }
+
+    .menu .navbar ul {
+        flex-direction: column;
+        padding: 0;
+        width: 100%;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .menu .navbar ul li a:hover {
+        color: #1F0C42;
+    }
+
+    #menu:checked ~ .navbar {
+        display: flex; /* Muestra el menú cuando el checkbox está marcado */
+    }
+}
+
+/* Mejoras para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .menu {
+        padding: 10px; /* Menos padding en pantallas más pequeñas */
+    }
+
+    .navbar {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para mejor contraste */
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        padding: 10px;
+        width: 100%;
+    }
+}
