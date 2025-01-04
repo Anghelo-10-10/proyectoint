@@ -106,6 +106,89 @@ body {
     display: none;
 }
 
+.card-container {
+    position: absolute; /* Posición absoluta sobre el video */
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%; /* Ajusta el ancho del contenedor */
+    z-index: 2; /* Asegúrate de que esté sobre el video */
+}
+
+.card-deck {
+    display: flex;
+    gap: 20px; /* Espacio entre las cartas */
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro y semi-transparente para integrarse mejor con el video */
+    color: #fff; /* Texto blanco para buen contraste */
+    border-radius: 12px; /* Bordes redondeados para mayor suavidad */
+    overflow: hidden; /* Evita que el contenido sobresalga de los bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra sutil para darle profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7); /* Sombra más intensa al pasar el ratón */
+}
+
+.card img {
+    width: 100%; /* Hace que la imagen ocupe todo el ancho de la carta */
+    height: 200px; /* Define una altura fija para la imagen */
+    object-fit: contain; /* Asegura que la imagen cubra completamente el área sin distorsionar */
+    background-position: center;
+    border-top-left-radius: 12px; /* Bordes redondeados para la parte superior */
+    border-top-right-radius: 12px;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+
+.card-footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.card-button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de levantar */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 1200px) {
     .menu {
         padding: 10px 20px; /* Ajustado para pantallas pequeñas */
@@ -174,3 +257,4 @@ body {
         width: 100%;
     }
 }
+
