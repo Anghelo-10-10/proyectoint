@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Puntos de Reciclaje</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea, select, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Puntos de Reciclaje</h1>
+        <form id="recyclingForm">
+            <h2>Información del Punto de Reciclaje</h2>
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Ingrese la dirección" required>
+
+            <label for="materiales">Materiales a Reciclar:</label>
+            <textarea id="materiales" name="materiales" placeholder="Ingrese los materiales que se pueden reciclar" required></textarea>
+
+            <label for="capacidad">Capacidad (en kg):</label>
+            <input type="number" id="capacidad" name="capacidad" placeholder="Ingrese la capacidad máxima" required>
+
+            <h2>Información del Responsable</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" placeholder="Ingrese su número de cédula" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono" required>
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
+
+            <button type="button" onclick="registrarPunto()">Registrar</button>
+        </form>
+    </div>
+
+    <script>
+        function registrarPunto() {
+            // Obtener los valores del formulario
+            const direccion = document.getElementById("direccion").value;
+            const materiales = document.getElementById("materiales").value;
+            const capacidad = document.getElementById("capacidad").value;
+            const nombre = document.getElementById("nombre").value;
+            const cedula = document.getElementById("cedula").value;
+            const telefono = document.getElementById("telefono").value;
+            const correo = document.getElementById("correo").value;
+
+            if (direccion && materiales && capacidad && nombre && cedula && telefono && correo) {
+                // Crear un objeto para almacenar el registro
+                const nuevoRegistro = {
+                    direccion,
+                    materiales,
+                    capacidad,
+                    nombre,
+                    cedula,
+                    telefono,
+                    correo
+                };
+
+                // Obtener registros existentes del Local Storage
+                const registros = JSON.parse(localStorage.getItem("registros")) || [];
+
+                // Agregar el nuevo registro al array
+                registros.push(nuevoRegistro);
+
+                // Guardar el array actualizado en Local Storage
+                localStorage.setItem("registros", JSON.stringify(registros));
+
+                alert("Punto de reciclaje registrado correctamente.");
+                document.getElementById("recyclingForm").reset();
+            } else {
+                alert("Por favor, complete todos los campos.");
+            }
+        }
+    </script>
+</body>
+</html>
