@@ -1,16 +1,15 @@
-let Song = require('../models/music');
+let locations = []; // Array para almacenar las ubicaciones
 
-exports.addSong = async(req,res)=>{
-    console.log("REQUEST RECIBIDO " +req.body)
-    const {name,artist,url_video} = req.body;
-    const song = new Song({ name,artist,url_video });
-    try{
-        await song.save();
-        console.log("CANCION GUARDADA " + song)
-        res.status(201).json(song);
-    }
-    catch(error){
-        console.error(error);
-        res.status(400).json({message: "Error al guardar canción"})
-    }
-}
+exports.getLocations = (req, res) => {
+    res.json(locations);
+};
+
+exports.addLocation = (req, res) => {
+    const { lat, lng, description } = req.body;
+    locations.push({ lat: parseFloat(lat), lng: parseFloat(lng), description });
+    res.json({ message: 'Ubicación agregada con éxito.' });
+};
+
+
+Latitud: 10.595833
+Longitud: -71.618611
