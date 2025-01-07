@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa de Reciclaje</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>Mapa Interactivo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="mapa.css">
 </head>
 <body>
-    <h1>Puntos de Reciclaje</h1>
-    <div id="map" style="height: 500px;"></div>
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="/map.js"></script>
+    <div id="map"></div>
+    <form id="location-form">
+        <input type="text" id="description" placeholder="Descripción" required>
+        <input type="number" id="latitude" placeholder="Latitud" step="any" required>
+        <input type="number" id="longitude" placeholder="Longitud" step="any" required>
+        <button type="submit">Agregar ubicación</button>
+    </form>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
+
