@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residuos Electrónicos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 15px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 250px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            color: #4CAF50;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .modal-content h2 {
+            color: #4CAF50;
+        }
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+    </style>   
+</head>
+<body>
+    <header>
+        <h1>Residuos Electrónicos</h1>
+        <p>Selecciona un tipo de residuo para más información</p>
+    </header>
+    <div class="container">
+        <div class="grid">
+            <div class="card" onclick="openModal('computadoras')">
+                <img src="./media/images/computadora.jpg" alt="Computadoras">
+                <h3>Computadoras</h3>
+                <p>Pueden reciclarse procesadores, placas base, discos duros y más.</p>
+            </div>
+            <div class="card" onclick="openModal('telefonos')">
+                <img src="./media/images/telefono.jpg" alt="Teléfonos móviles">
+                <h3>Teléfonos móviles</h3>
+                <p>Recicla baterías, carcasas y componentes internos.</p>
+            </div>
+            <div class="card" onclick="openModal('televisores')">
+                <img src="./media/images/televisor.jpg" alt="Televisores">
+                <h3>Televisores</h3>
+                <p>Recicla pantallas, cables y circuitos electrónicos.</p>
+            </div>
+            <div class="card" onclick="openModal('impresoras')">
+                <img src="./media/images/impresora.jpg" alt="Impresoras">
+                <h3>Impresoras</h3>
+                <p>Cartuchos de tinta, componentes plásticos y partes electrónicas.</p>
+            </div>
+            <!-- Nuevas opciones -->
+            <div class="card" onclick="openModal('tablets')">
+                <img src="./media/images/tablet.jpg" alt="Tablets">
+                <h3>Tablets</h3>
+                <p>Recicla baterías, pantallas y componentes electrónicos.</p>
+            </div>
+            <div class="card" onclick="openModal('microondas')">
+                <img src="./media/images/microondas.jpg" alt="Microondas">
+                <h3>Microondas</h3>
+                <p>Recicla circuitos, plásticos y partes metálicas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modales -->
+    <div id="computadoras" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('computadoras')">&times;</span>
+            <h2>Computadoras</h2>
+            <p><strong>Características:</strong> Procesadores, placas base, discos duros, memoria RAM, etc.</p>
+            <p><strong>Ubicación de reciclaje:</strong> Centro de reciclaje XYZ, Calle 123, Ciudad.</p>
+        </div>
+    </div>
+
+    <div id="telefonos" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('telefonos')">&times;</span>
+            <h2>Teléfonos móviles</h2>
+            <p><strong>Características:</strong> Baterías, pantallas, carcasas plásticas.</p>
+            <p><strong>Ubicación de reciclaje:</strong> Centro de reciclaje ABC, Av. Principal, Ciudad.</p>
+        </div>
+    </div>
+
+    <div id="televisores" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('televisores')">&times;</span>
+            <h2>Televisores</h2>
+            <p><strong>Características:</strong> Pantallas LCD, LED, circuitos internos.</p>
+            <p><strong>Ubicación de reciclaje:</strong> Reciclaje Tech, Calle Futura 456, Ciudad.</p>
+        </div>
+    </div>
+
+    <div id="impresoras" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('impresoras')">&times;</span>
+            <h2>Impresoras</h2>
+            <p><strong>Características:</strong> Cartuchos de tinta, plásticos, piezas electrónicas.</p>
+            <p><strong>Ubicación de reciclaje:</strong> Reciclaje Green, Av. Sostenible, Ciudad.</p>
+        </div>
+    </div>
+
+    <div id="tablets" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('tabletas')">&times;</span>
+            <h2>Tabletas</h2>
+            <p><strong>Características:</strong> Baterías, pantallas, componentes electrónicos.</p>
+            <p><strong>Ubicación de reciclaje:</strong> Reciclaje Digital, Calle 789, Ciudad.</p>
+        </div>
+    </div>
+
+    <div id="microondas" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('microondas')">&times;</span>
+            <h2>Microondas</h2>
+            <p><strong>Características:</strong> Circuitos internos, plásticos, partes metálicas.</p>
+            <p><strong>Ubicación de reciclaje:</strong> Reciclaje Electrodomésticos, Av. Ecológica, Ciudad.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        };
+    </script>
+</body>
+</html>
